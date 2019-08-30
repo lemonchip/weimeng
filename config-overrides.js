@@ -4,8 +4,8 @@ module.exports = override(
       fixBabelImports('import', {
          libraryName: 'antd-mobile',
          libraryDirectory: 'es',
-         //style: 'css',
-        style: true,
+        // style: 'css',
+         style: true,
        }),
      addLessLoader({
            javascriptEnabled: true,
