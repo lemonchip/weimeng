@@ -5,6 +5,7 @@ import  {HashRouter,Route,Switch}    from 'react-router-dom'
 import Main from './components/main/Main'
 import Login from './containers/login/Login';
 import Register from './containers/register/Register';
+import './components/app.less'
 
 ReactDOM.render((        
     
