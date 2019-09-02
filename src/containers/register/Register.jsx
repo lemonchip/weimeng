@@ -5,7 +5,11 @@ import {Button,
         WhiteSpace,
         InputItem }  from 'antd-mobile'
 
+import {Redirect} from  'react-router-dom'
+import {connect}    from 'react-redux'
+import {register}  from '../../redux/action'
 import './register.less'
+
 export default class Register extends Component {
 
     constructor(props){
@@ -40,6 +44,7 @@ export default class Register extends Component {
 
     register = () => {
         console.log(this.state)
+        
     }
 
 
@@ -90,3 +95,8 @@ export default class Register extends Component {
         );
         }
 }
+
+export default connect(
+    state => state.user,
+    {register}
+)(Register)
