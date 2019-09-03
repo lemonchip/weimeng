@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import  {HashRouter,Route,Switch}    from 'react-router-dom'
+import {HashRouter, Switch, Route} from 'react-router-dom'
 //import App from './App';
-import Main from './components/main/Main'
+import Main from './components/main/Main';
 import Login from './containers/login/Login';
 import Register from './containers/register/Register';
 import './components/app.less'

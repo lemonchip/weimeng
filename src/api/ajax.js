@@ -9,8 +9,9 @@ export default function ajax(url='',data={},type='GET'){
                                 }
                                 )
                         }else{
-                            return axios.post(url,data)
-                            
+                             const U = axios.post(url,data)
+                            return  U
+                            debugger
                         }
 
 

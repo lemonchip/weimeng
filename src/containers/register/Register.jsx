@@ -10,7 +10,7 @@ import {connect}    from 'react-redux'
 import {register}  from '../../redux/action'
 import './register.less'
 
-export default class Register extends Component {
+ class Register extends Component {
 
     constructor(props){
         super(props)
@@ -44,18 +44,38 @@ export default class Register extends Component {
 
     register = () => {
         console.log(this.state)
+
+        this.props.register(
+            this.state.username,
+            this.state.password,
+            this.state.password2,
+            this.state.e_mail
+            )
         
     }
 
 
         render() {
+            if(this.props.redirectTo){
+            console.log(this.props.redirectTo)
+        }else{
+            console.log('no')
+        }
+            const {redirectTo,msg} = this.props
+            
+            if(redirectTo){
+               // debugger
+                return <Redirect to={redirectTo}/>
+            }
+
         return (       
         <div>
            <WingBlank>
+           {msg ? <p>{msg}</p> : null} 
                <List>
                    <InputItem 
                    placeholder="输入用户名" 
-                   onChange={val =>{ console.log(val) ; this.handerChange('username',val)}}
+                   onChange={val =>{  this.handerChange('username',val)}}
                    >
                      用&nbsp;户&nbsp;名:
                    </InputItem>
@@ -73,7 +93,7 @@ export default class Register extends Component {
                    <InputItem 
                    placeholder="确认密码" 
                    type='password'
-                   onChange={val =>{this.handerChange('password',val)}}
+                   onChange={val =>{this.handerChange('password2',val)}}
                    >
                      确认密码:
                    </InputItem>
