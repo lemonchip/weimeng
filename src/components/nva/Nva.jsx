@@ -16,7 +16,7 @@ class Nva extends Component {
 
   render() {
     return (
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 ,zIndex:-1} : { height: 400 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
@@ -38,7 +38,7 @@ class Nva extends Component {
               this.setState({
                 selectedTab: 'home',
               });
-              this.props.history.replace('/main/home') 
+              this.props.history.replace('/home') 
             }}
             data-seed="logId"
           >
@@ -58,7 +58,7 @@ class Nva extends Component {
               this.setState({
                 selectedTab: 'redTab',
               });
-              this.props.history.replace('/main/trends')
+              this.props.history.replace('/trends')
 
             }}
             data-seed="logId1"
@@ -79,7 +79,7 @@ class Nva extends Component {
               this.setState({
                 selectedTab: 'greenTab',
               });
-              this.props.history.replace('/main/personal')
+              this.props.history.replace('/personal')
             }}
           >
           </TabBar.Item>

@@ -16,13 +16,13 @@ import Personal from '../../containers/personal/Personal';
               <div>
          
                 <Switch>
-                <Route path='/main/home' component={Home}></Route>
-                <Route path='/main/trends' component={Trends}></Route>
-                <Route path='/main/personal' component={Personal}></Route>
+                <Route path='/home' component={Home}></Route>
+                <Route path='/trends' component={Trends}></Route>
+                <Route path='/personal' component={Personal}></Route>
 
                 </Switch>
     
-              <Nva />
+              <Nva style='z-index:-1'/>
             </div>
             )
       }

@@ -56,17 +56,18 @@ import './register.less'
 
 
         render() {
-            if(this.props.redirectTo){
-            console.log(this.props.redirectTo)
-        }else{
-            console.log('no')
+        //     if(this.props.redirectTo){
+        //     console.log(this.props.redirectTo)
+        // }else{
+        //     console.log('no')
+        // }
+
+        //成功之后跳转首页
+        const {redirectTo,msg} = this.props
+        if(redirectTo==='/'){
+           // debugger
+            return <Redirect to={redirectTo}/>
         }
-            const {redirectTo,msg} = this.props
-            
-            if(redirectTo){
-               // debugger
-                return <Redirect to={redirectTo}/>
-            }
 
         return (       
         <div>
