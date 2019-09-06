@@ -1,4 +1,5 @@
 import axios  from 'axios'
+axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
 export default function ajax(url='',data={},type='GET'){
 
