@@ -3,7 +3,8 @@ import {Button,
         List,
         WingBlank,
         WhiteSpace,
-        InputItem }  from 'antd-mobile'
+        InputItem 
+    }  from 'antd-mobile'
 
 import {Redirect} from  'react-router-dom'
 import {connect}    from 'react-redux'
