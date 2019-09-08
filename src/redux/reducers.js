@@ -1,6 +1,6 @@
 import {combineReducers}   from 'redux'
 
-import {AUTH_SUCCESS,ERROR_MSG ,LOGOUT} from './action-tybe'
+import {AUTH_SUCCESS,ERROR_MSG ,LOGOUT, UPLOAD_SUCCESS, UPLOAD_ERROR} from './action-tybe'
 
 const initUser = {
     username : '',
@@ -8,6 +8,15 @@ const initUser = {
     msg      : '',
     redirectTo: ''
 }
+
+const  Headline = {
+
+    formData : {},
+    redirectTo:'',
+    msg      : ''
+
+}
+
 
 function user(state=initUser,action){
 
@@ -28,6 +37,19 @@ function user(state=initUser,action){
 
 }
 
+function writeHeadline(state=Headline,action){
+    switch(action.type){
+        case UPLOAD_SUCCESS:
+            return {...state,redirectTo:'/'}
+        case UPLOAD_ERROR:
+            return {...state,msg:action.data}
+        default:
+            return state
+    }
+
+}
+
 export default combineReducers({
-    user
+    user,
+    writeHeadline
 })

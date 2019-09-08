@@ -7,15 +7,17 @@ import { ImagePicker,
         TextareaItem ,
         WhiteSpace
       } from 'antd-mobile';
-
+        
+import {Redirect} from  'react-router-dom'
 import ajax  from '../../api/ajax'
+import {connect}    from 'react-redux'
 import ReactQuill, { Quill } from 'react-quill';
 import { ImageDrop } from 'quill-image-drop-module';
 import 'react-quill/dist/quill.snow.css';
 import axios  from 'axios'
+import {upload} from '../../redux/action'
 
-
-axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+//axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
   // 在quiil中注册quill-image-drop-module
   Quill.register('modules/imageDrop', ImageDrop);
 
@@ -27,7 +29,7 @@ axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 //     id: '2122',
 //   }];
 
-export default class WriteHeadline extends Component{
+ class WriteHeadline extends Component{
 
     componentDidMount() {
       this.autoFocusInst.focus();
@@ -38,8 +40,11 @@ export default class WriteHeadline extends Component{
         files: [],
         multiple: true,
         disableDelete:false,
-  
-        tittle:''
+        formData : {},
+        title:'',
+        content:'',
+        author:'admin',
+        topic: '科技'
       }
 
 
@@ -60,43 +65,55 @@ export default class WriteHeadline extends Component{
     ];
 
 
-  
 
-        // 当修改文本框的内容时，会自动调用onQuillChange函数
-    onQuillChange = (content, delta, source, editor) => {
-      // content 是真实的DOM节点
-      // delta 记录了修改的对象，下篇文章详述
-      // source 值为user或api
-      // editor 文本框对象，可以调用函数获取content, delta值
-    };
 
       upload =  () => {
 
-        const instance=axios.create({
-            withCredentials: true
-           }) 
+        // const instance=axios.create({
+        //     withCredentials: true
+        //    }) 
               
 
-        let formData = new FormData(); 
+         let formData = new FormData(); 
 
         for(let key in this.state.files){
 
-       formData.append("file", this.state.files[key].file);
-       
+        formData.append("file", this.state.files[key].file);
+        
         }
+        formData.append("title",this.state.title)
+        formData.append("topic",this.state.topic)
+        formData.append("content",this.state.content)
+        formData.append("author",this.state.author)
 
-        const res = instance.post('/upload/upload',formData)
-        //debugger
-        res.then(function (response) {
-            console.log(response);
-          }).catch(function (error) {
-            console.log(error);
-          });
+        this.setState({formData:formData})
+
+
+        console.log(this.state)
+
+        // const res = instance.post('/upload/upload',formData)
+        // //debugger
+        // res.then(function (response) {
+        //     console.log(response);
+        //   }).catch(function (error) {
+        //     console.log(error);
+        //   });
+
+        this.props.upload(formData)
         
       }
 
+            // 当修改文本框的内容时，会自动调用onQuillChange函数
+      onQuillChange = (content, delta, source, editor) => {
+        // content 是真实的DOM节点
+        // delta 记录了修改的对象，下篇文章详述
+        // source 值为user或api
+        // editor 文本框对象，可以调用函数获取content, delta值
+        this.setState({content:content})
+      }
+
       onChange = (files, type, index) => {
-        console.log(files, type, index);
+        //console.log(files, type, index);
         // if(this.state.files){
         //   this.setState({selectable:false})
         // }else{
@@ -114,12 +131,22 @@ export default class WriteHeadline extends Component{
       }
 
     render(){
-      console.log(this.state.title)
+     // console.log(this.state.title)
+
+     //成功之后跳转首页
+     const {redirectTo,msg} = this.props
+     if(redirectTo==='/'){
+        // debugger
+         return <Redirect to={redirectTo}/>
+     }
+
         const {files} = this.state
+
         return(
 
             <div>
 
+            {msg ? <p>{msg}</p> : null} 
             <WhiteSpace size='xl'/>
             <List>
              
@@ -175,4 +202,8 @@ export default class WriteHeadline extends Component{
     }
 
 }
+export default connect(
+  state => state.writeHeadline,
+  {upload}
+)(WriteHeadline)
 
