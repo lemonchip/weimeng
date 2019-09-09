@@ -5,6 +5,7 @@ import { ImagePicker,
         Button ,
         List, 
         TextareaItem ,
+        Toast,
         WhiteSpace
       } from 'antd-mobile';
         
@@ -31,9 +32,9 @@ import {upload} from '../../redux/action'
 
  class WriteHeadline extends Component{
 
-    componentDidMount() {
-      this.autoFocusInst.focus();
-    }
+    // componentDidMount() {
+    //   this.autoFocusInst.focus();
+    // }
 
     
     state = {
@@ -88,7 +89,7 @@ import {upload} from '../../redux/action'
 
         this.setState({formData:formData})
 
-
+        console.log(formData.get('title'))
         console.log(this.state)
 
         // const res = instance.post('/upload/upload',formData)
@@ -99,8 +100,19 @@ import {upload} from '../../redux/action'
         //     console.log(error);
         //   });
 
-        this.props.upload(formData)
         
+        const res =  this.props.upload(formData)
+        //const {redirectTo,msg} = this.props
+       //拿到错误消息并显示
+        const  msg = res.data
+        if(msg){
+           Toast.info(msg, 2)
+        }else{
+          //没有错误消息提示成功
+          Toast.success('发布成功', 1);
+        }
+       
+
       }
 
             // 当修改文本框的内容时，会自动调用onQuillChange函数
@@ -145,8 +157,6 @@ import {upload} from '../../redux/action'
         return(
 
             <div>
-
-            {msg ? <p>{msg}</p> : null} 
             <WhiteSpace size='xl'/>
             <List>
              

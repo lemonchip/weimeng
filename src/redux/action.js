@@ -11,9 +11,9 @@ const error_msg = (msg) => ({type:ERROR_MSG,data:msg})
 const auth_success = (user)  =>({type:AUTH_SUCCESS,data:user})
 //退出登录
 const syn_logout = (data)  =>({type:LOGOUT, data:data})
-//
+// 发布头条成功
 const upload_success = (data) =>({type:UPLOAD_SUCCESS,data:data}) 
-//
+//发布头条失败
 const upload_error = (msg) =>({type:UPLOAD_ERROR,data:msg})
 
 export function register(username,password,password2,e_mail){
@@ -70,8 +70,27 @@ export function logout(){
 //上传的异步action
 export function upload(formData){
 
+     //   console.log(formData.get('title'))
+     //验证填写内容是否为空
+     if(!formData.get('title')){
+         return upload_error('标题不能为空')
+     }
+     if(!formData.get('topic')){
+        return upload_error('请至少选择一个话题')
+     }
+     if(!formData.get('content')){
+        return upload_error('内容不能为空')
+     }
+     if(!formData.get('file')){
+        return upload_error('请选择图片')
+     }
+
+
     return async dispatch => {
+
+        
             const res = await reqUpload(formData)
+                //发送异步请求
             const result = res.data
             if(result.code === 0){
                 dispatch(upload_success(result.data))
