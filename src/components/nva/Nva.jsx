@@ -6,18 +6,21 @@ class Nva extends Component {
 
    constructor(props) {
     super(props);
+
     this.state = {
       selectedTab: 'home',
       hidden: false,
       fullScreen: true,
+      top:window.screen.height-50+'px'
     };
   }
 
 
   render() {
     return (
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 ,zIndex:-1} : { height: 400 }}>
+      <div style={this.state.fullScreen ? { position: 'fixed', height: '50px', width: '100%', top: this.state.top } : { height: 400 }}>
         <TabBar
+        style={{position: 'fixed',boxShadow: '2px 2px 3px #888888'}}
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
           barTintColor="white"

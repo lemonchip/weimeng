@@ -25,8 +25,8 @@ import '../register/register.less'
                 return <Redirect to={redirectTo}></Redirect>
             }
         return (
-        <div>
-            <Button type='primary' onClick={this.logout}>退出登录</Button>    
+        <div style={{zIndex:-1,height:'100%',width:'100%'}}>
+            <Button type='primary' onClick={this.logout} style={{zIndex:'1'}}>退出登录</Button>    
         </div>
         
         );

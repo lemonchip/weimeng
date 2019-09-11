@@ -22,7 +22,7 @@ import Personal from '../../containers/personal/Personal';
 
                 </Switch>
     
-              <Nva style='z-index:-1'/>
+              <Nva />
             </div>
             )
       }
