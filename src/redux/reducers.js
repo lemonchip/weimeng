@@ -1,6 +1,7 @@
 import {combineReducers}   from 'redux'
 
-import {AUTH_SUCCESS,ERROR_MSG ,LOGOUT, UPLOAD_SUCCESS, UPLOAD_ERROR} from './action-tybe'
+import {AUTH_SUCCESS,ERROR_MSG ,LOGOUT, UPLOAD_SUCCESS, UPLOAD_ERROR,
+        REQ_SUCCESS,REQ_ERROR} from './action-tybe'
 
 const initUser = {
     username : '',
@@ -48,8 +49,26 @@ function writeHeadline(state=Headline,action){
     }
 
 }
+const initHeadlineList = {
+            data : {},
+            msg :""
+}
+
+function headlineList(state=initHeadlineList,action){
+
+        switch(action.type){
+
+            case REQ_SUCCESS:
+                return {...action.data}
+            case REQ_ERROR:
+                return {...state,msg:action.data}
+                default:
+                    return state
+        }
+}
 
 export default combineReducers({
     user,
-    writeHeadline
+    writeHeadline,
+    headlineList
 })

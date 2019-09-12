@@ -15,3 +15,8 @@ export const UPLOAD_SUCCESS = 'UPLOAD_SUCCESS'
 
 //发布失败
 export const UPLOAD_ERROR = 'UPLOAD_ERROR'
+
+
+export const REQ_SUCCESS = 'REQ_SUCCESS'
+
+export const REQ_ERROR = 'REQ_ERROR'

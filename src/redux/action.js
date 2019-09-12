@@ -1,7 +1,8 @@
 
-import {AUTH_SUCCESS,ERROR_MSG, LOGOUT,UPLOAD_SUCCESS,UPLOAD_ERROR}  from './action-tybe'
+import {AUTH_SUCCESS,ERROR_MSG, LOGOUT,UPLOAD_SUCCESS,
+        UPLOAD_ERROR,REQ_SUCCESS,REQ_ERROR}  from './action-tybe'
 
-import {reqRegister, reqLogin,reqUpload} from '../api/index'
+import {reqRegister, reqLogin,reqUpload,reqHeadlineList} from '../api/index'
 import { async } from 'q';
 //import { async } from 'q';
 
@@ -15,6 +16,10 @@ const syn_logout = (data)  =>({type:LOGOUT, data:data})
 const upload_success = (data) =>({type:UPLOAD_SUCCESS,data:data}) 
 //发布头条失败
 const upload_error = (msg) =>({type:UPLOAD_ERROR,data:msg})
+
+const req_headlineList = (data) =>({type:REQ_SUCCESS,data:data})
+
+const req_error = (msg)  =>({type:REQ_ERROR,data:msg})
 
 export function register(username,password,password2,e_mail){
         //进行表单验证
@@ -99,4 +104,20 @@ export function upload(formData){
             }
 
     }
+}
+
+//查询头条数据
+export function headlineList(limit,page){
+
+        return async dispatch => {
+
+            const res = await reqHeadlineList({limit,page})
+            const result = res.data 
+            if(result.code === 0){
+                dispatch(req_headlineList(result.data))
+            }else{
+                dispatch(req_error(result.msg))
+            }
+        }
+
 }

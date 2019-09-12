@@ -62,7 +62,7 @@ export default class HeadlineItem extends Component {
             <div style={this.with}></div>
             <div style={this.itemStyle}>
                 
-             <img src={require('../../assets/images/1.jpg')} style={this.imgStyle}></img>
+             <img src={this.props.titleImage} style={this.imgStyle}></img>
             
               <h4 style={this.h4Style}>{this.props.title}</h4>
 
