@@ -71,6 +71,7 @@ import {connect}    from 'react-redux'
         }
 }
 
+//中秋快乐
 
 export default connect(
     state => state.headlineList,
