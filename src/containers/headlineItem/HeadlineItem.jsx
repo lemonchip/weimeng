@@ -3,11 +3,21 @@ import React, {Component} from 'react';
 import './headlineItem.less'
 import { relative } from 'path';
 import {
+    Button,
     WingBlank,
     WhiteSpace,
 }  from 'antd-mobile'
-export default class HeadlineItem extends Component {
+import {Redirect} from 'react-router-dom' 
+import {connect}    from 'react-redux'
+import {headlineContent} from '../../redux/action'
+import {withRouter} from 'react-router-dom'
 
+ class HeadlineItem extends Component {
+    constructor(props,context) {
+        super(props,context);
+
+        this.toContent = this.toContent.bind(this)
+    }    
 
     itemStyle = {
         margin:'0px',
@@ -53,14 +63,24 @@ export default class HeadlineItem extends Component {
         backgroundColor: '#ebebef',
         color: '#bbb',
         textAlign: 'center',
-        height: '5px',
+        height: '3px',
         lineHeight: '30px',
         width: '100%'
     }
+
+
+        toContent = (id) => {
+
+            this.props.headlineContent({id:id})
+            this.props.history.replace('/hi') 
+        }
+
             render() {
-            return (<div>
+                console.log(this.props.id)
+            return (
+            <div >
             <div style={this.with}></div>
-            <div style={this.itemStyle}>
+            <div style={this.itemStyle} onClick = {() =>this.toContent(this.props.id)}>
                 
              <img src={this.props.titleImage} style={this.imgStyle}></img>
             
@@ -73,7 +93,12 @@ export default class HeadlineItem extends Component {
 
             
             </div>
+           
             </div>
             );
             }
 }
+export default withRouter(connect(
+    state => state.headlineContent,
+    { headlineContent}
+)(HeadlineItem))

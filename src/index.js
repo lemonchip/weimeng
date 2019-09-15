@@ -12,7 +12,7 @@ import store  from './redux/store'
 import WriteHeadline   from './containers/WriteHeadline/WriteHeadline'
 import HeadlineList   from './containers/headlineList/HeadlineList'
 import HeadlineItem   from './containers/headlineItem/HeadlineItem'
-
+import HeadlineContent from './containers/headlineContent/headlineContent'
 ReactDOM.render((        
     <Provider store={store}>
     <HashRouter>
@@ -21,7 +21,7 @@ ReactDOM.render((
     <Route path='/register' component={Register}></Route>
     <Route path='/write' component={WriteHeadline}></Route>
     <Route path='/h' component={HeadlineList}></Route>
-    <Route path='/hi' component={HeadlineItem}></Route>
+    <Route path='/hi' component={HeadlineContent}></Route>
     <Route  component={Main}></Route>
     </Switch>
     </HashRouter>

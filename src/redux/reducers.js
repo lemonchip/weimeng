@@ -50,16 +50,16 @@ function writeHeadline(state=Headline,action){
 
 }
 const initHeadlineList = {
-            data : {},
+            data : [],
             msg :""
 }
 
 function headlineList(state=initHeadlineList,action){
-
+              
         switch(action.type){
-
+            
             case REQ_SUCCESS:
-                return {...action.data}
+                return {data:action.data}
             case REQ_ERROR:
                 return {...state,msg:action.data}
                 default:
@@ -67,8 +67,23 @@ function headlineList(state=initHeadlineList,action){
         }
 }
 
+
+function headlineContent(state={},action){
+              
+    switch(action.type){
+        
+        case REQ_SUCCESS:
+            return {content:action.data}
+        case REQ_ERROR:
+            return {msg:action.data}
+            default:
+                return state
+    }
+}
+
 export default combineReducers({
     user,
     writeHeadline,
-    headlineList
+    headlineList,
+    headlineContent
 })
