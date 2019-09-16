@@ -6,10 +6,10 @@ import {Button,
     WhiteSpace,
     }  from 'antd-mobile'
 
-import {Redirect} from  'react-router-dom'
+import {Redirect ,withRouter} from  'react-router-dom'
 import {connect}    from 'react-redux'
 import HeadlineList   from '../headlineList/HeadlineList'
-export default class Home extends Component {
+ class Home extends Component {
 
             render() {
 
@@ -23,3 +23,4 @@ export default class Home extends Component {
 
             }
 }
+export default withRouter(Home)

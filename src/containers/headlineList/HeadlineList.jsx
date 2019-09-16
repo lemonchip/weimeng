@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
 import HeadlineItem from '../headlineItem/HeadlineItem'
-
+import PropTypes from 'prop-types';
 import {headlineList} from '../../redux/action'
 import {connect}    from 'react-redux'
  class HeadlineList extends Component {
     constructor(props) {
     super(props);
     
-    this.state = {
-
-        headlineList : [],
-        page:1,
-        limit:3
-    };
-  
     this.timeHandle = this.timeHandle.bind(this);
   }
+    state = {
+
+    headlineList : [],
+    page:1,
+    limit:3
+};
+
+static propTypes = { 
+    headlineList: PropTypes.array.isRequired 
+}
 
 
 
@@ -43,9 +46,15 @@ import {connect}    from 'react-redux'
         }
 
         componentDidMount(){
-            this.getHeadlineList()
-
+            
             const {data} = this.props
+           
+            //如果data有数据就不在发请求
+            if(data.length===0){
+                
+                this.getHeadlineList()
+            }
+            
            // console.log(data)
             this.setState({headlineList:data})
         }
@@ -60,7 +69,16 @@ import {connect}    from 'react-redux'
            // const {data} = this.props
            // console.log(data)
            // console.log(Array.isArray(this.state.headlineList))
-            const list =    this.state.headlineList.map((headline)=>
+            let {data} = this.props
+            //从headlineContent返回时，返回的是一个对象未知原因
+            if(!(data instanceof Array))
+               {
+                const  tem = data
+                   data = []
+                   data.push(tem)
+               }
+                
+            const list =   data.map((headline)=>
             (
             
             <HeadlineItem key={headline._id} 

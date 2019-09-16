@@ -1,5 +1,5 @@
 
-
+//时间处理
 export  const   timeHandle = (time) => {
 
     const relTime = Date.now() - time

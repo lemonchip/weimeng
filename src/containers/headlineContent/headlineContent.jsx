@@ -4,6 +4,7 @@ import {headlineContent} from '../../redux/action'
 import {connect}    from 'react-redux'
 import './headlineContent.less'
 import {timeHandle} from '../../utils/time/handleTime'
+import  Head from '../../components/head/Head'
  class HeadlineContent extends Component {
 
 
@@ -75,7 +76,7 @@ import {timeHandle} from '../../utils/time/handleTime'
             const {content} = this.props
         return (
         <div>
-
+                <Head />
                 <div style={{ position: 'relative' }}>
                     <img src={content.titleImage} style={this.imgStyle}></img>
                     <h3 style={this.titleStyle}> {content.title}</h3>

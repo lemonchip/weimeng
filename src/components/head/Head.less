@@ -1,0 +1,45 @@
+
+@noneMarrgin:0px; //
+@nonePadding:0px; //
+@headCompWidth:100%;//
+@headCompHeight:35px;//
+@shadowOffestX:5px;//
+@shadowOffestY:5px;//
+@blurSize:3px;//模糊程度
+@offestColor:#888888;//
+@returnImgWidth: @headCompHeight - 5px  ;//
+@returnImgHeight: @returnImgWidth  ;//
+@returnImgLeft: 10px  ;//
+@returnImgTop:  3px  ;//
+
+
+#head-main {
+    position: relative;
+
+}
+
+#head {
+    margin: @noneMarrgin auto;
+    padding: @nonePadding;
+    width: @headCompWidth;
+    height: @headCompHeight;
+   
+    box-shadow: @shadowOffestX @shadowOffestY @blurSize @offestColor ;
+    text-align: center ;
+}
+
+#head span{
+    vertical-align: middle;
+    line-height: 35px;
+    font-size: 18px;
+    font-family: initial;
+}
+
+#return-img {
+     position: absolute;
+     width: @returnImgWidth ;
+     height: @returnImgHeight;
+     left: @returnImgLeft;
+     top: @returnImgTop ;
+
+}
