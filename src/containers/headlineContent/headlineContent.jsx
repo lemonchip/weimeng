@@ -8,6 +8,9 @@ import  Head from '../../components/head/Head'
  class HeadlineContent extends Component {
 
 
+    // state = {
+    //     id : this.props.content.id
+    // }
 
     imgStyle = {
         margin:'0px',
@@ -67,6 +70,14 @@ import  Head from '../../components/head/Head'
         fontFamily: 'auto',
         color:'#888888'
        
+
+    }
+
+    componentDidMount(){
+        // const {content} = this.props
+        // if(!connect){
+        //     this.props.headlineContent(this.state.id)
+        // }
 
     }
 

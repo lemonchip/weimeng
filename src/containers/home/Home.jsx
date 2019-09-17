@@ -5,7 +5,7 @@ import {Button,
     WingBlank,
     WhiteSpace,
     }  from 'antd-mobile'
-
+import Top from '../Top/Top'
 import {Redirect ,withRouter} from  'react-router-dom'
 import {connect}    from 'react-redux'
 import HeadlineList   from '../headlineList/HeadlineList'
@@ -14,7 +14,8 @@ import HeadlineList   from '../headlineList/HeadlineList'
             render() {
 
             return (
-                <div>
+            <div>
+                    <Top />
                     <HeadlineList />
             </div>
             
