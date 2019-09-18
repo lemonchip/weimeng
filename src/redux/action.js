@@ -99,7 +99,7 @@ export function upload(formData){
         
             const res = await reqUpload(formData)
                 //发送异步请求
-                debugger
+                // debugger
             const result = res.data
             if(result.code === 0){
                 dispatch(upload_success(result.data))
@@ -111,11 +111,11 @@ export function upload(formData){
 }
 
 //查询头条数据
-export function headlineList(limit,page){
+export function headlineList(limit,page,topic){
 
         return async dispatch => {
 
-            const res = await reqHeadlineList({limit,page})
+            const res = await reqHeadlineList({limit,page,topic})
             const result = res.data 
            
             if(result.code === 0){

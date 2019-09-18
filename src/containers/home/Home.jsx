@@ -9,12 +9,14 @@ import Top from '../Top/Top'
 import {Redirect ,withRouter} from  'react-router-dom'
 import {connect}    from 'react-redux'
 import HeadlineList   from '../headlineList/HeadlineList'
+import HeadTabs from '../../components/Tabs/Tabs'
  class Home extends Component {
 
             render() {
 
             return (
-            <div>
+            <div>   
+                    <HeadTabs />
                     <Top />
                     <HeadlineList />
             </div>

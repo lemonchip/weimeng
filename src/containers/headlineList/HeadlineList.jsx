@@ -6,15 +6,15 @@ import {connect}    from 'react-redux'
  class HeadlineList extends Component {
     constructor(props) {
     super(props);
-    
+    this.state = {
+
+        headlineList : [],
+        page:1,
+        limit:6,
+        topic:'推荐'
+    };
     this.timeHandle = this.timeHandle.bind(this);
   }
-    state = {
-
-    headlineList : [],
-    page:1,
-    limit:3
-};
 
 static propTypes = { 
     headlineList: PropTypes.array.isRequired 
@@ -24,7 +24,7 @@ static propTypes = {
 
         getHeadlineList = () =>{
 
-            this.props.headlineList(this.state.limit,this.state.page)
+            this.props.headlineList(this.state.limit,this.state.page,this.state.topic)
 
         }
 
@@ -50,11 +50,11 @@ static propTypes = {
             const {data} = this.props
            
             //如果data有数据就不在发请求
-            if(data.length===0){
+            // if(data.length===0){
                 
-                this.getHeadlineList()
-            }
-            
+               
+            // }
+             this.getHeadlineList()
            // console.log(data)
             this.setState({headlineList:data})
         }
@@ -69,8 +69,9 @@ static propTypes = {
            // const {data} = this.props
            // console.log(data)
            // console.log(Array.isArray(this.state.headlineList))
-            let {data} = this.props
-            //从headlineContent返回时，返回的是一个对象未知原因
+
+             let {data} = this.props
+           // 从headlineContent返回时，返回的是一个对象未知原因
             if(!(data instanceof Array))
                {
                 const  tem = data

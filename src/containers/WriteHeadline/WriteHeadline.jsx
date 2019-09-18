@@ -124,6 +124,7 @@ import {upload} from '../../redux/action'
         this.setState({content:content})
       }
 
+      //照片选择器，读取选择的图片
       onChange = (files, type, index) => {
         //console.log(files, type, index);
         // if(this.state.files){
@@ -136,9 +137,9 @@ import {upload} from '../../redux/action'
         });
       }
       
-
-      TitleOnChang = (title,val) => {
-        this.setState({[title]:val})
+      //接收输入的值
+      OnChangItem = (item,val) => {
+        this.setState({[item]:val})
         //console.log(this.state.title)
       }
 
@@ -166,11 +167,22 @@ import {upload} from '../../redux/action'
                data-seed="logId"
                ref={el => this.autoFocusInst = el}
                autoHeight
-               onChange={val=>{this.TitleOnChang('title',val)}}
+               onChange={val=>{this.OnChangItem('title',val)}}
               >
 
               </TextareaItem> 
-          
+              
+
+              <TextareaItem
+               title=""
+               placeholder="话题（必选）"
+               data-seed="logId"
+               ref={el => this.autoFocusInst = el}
+               autoHeight
+               onChange={val=>{this.OnChangItem('topic',val)}}
+              >
+
+              </TextareaItem> 
             </List>
        
             

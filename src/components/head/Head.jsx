@@ -13,7 +13,7 @@ import './Head.less'
     goBack = ()=>{
        
         console.log('返回')
-        this.props.history.push('/home')
+        this.props.history.replace('/home')
     
     }
 
