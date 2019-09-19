@@ -4,7 +4,8 @@ import {Button,
     WingBlank,
     WhiteSpace,
     }  from 'antd-mobile'
-
+import Head from '../../components/head/Head'
+import PersonalTop from '../personalTop/personalTop'
 import {Redirect} from  'react-router-dom'
 import {connect}    from 'react-redux'
 import {logout}  from '../../redux/action'
@@ -26,7 +27,10 @@ import '../register/register.less'
             }
         return (
         <div style={{zIndex:-1,height:'100%',width:'100%'}}>
-            <Button type='primary' onClick={this.logout} style={{zIndex:'1'}}>退出登录</Button>    
+            
+            <PersonalTop />
+
+            {/* <Button type='primary' onClick={this.logout} style={{zIndex:'1'}}>退出登录</Button>     */}
         </div>
         
         );
