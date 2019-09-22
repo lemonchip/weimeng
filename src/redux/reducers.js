@@ -81,9 +81,25 @@ function headlineContent(state={},action){
     }
 }
 
+
+function headlineTop(state={top:[]},action){
+       debugger      
+    switch(action.type){
+        
+        case REQ_SUCCESS:
+                console.log('reducers:'+action.data)
+            return {top:action.data}
+        case REQ_ERROR:
+            return {msg:action.data}
+            default:
+                return state
+    }
+}
+
 export default combineReducers({
     user,
     writeHeadline,
     headlineList,
-    headlineContent
+    headlineContent,
+    headlineTop
 })

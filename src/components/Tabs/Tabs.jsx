@@ -22,8 +22,9 @@ import {connect}    from 'react-redux'
     
 
     onChangeHandle = (tab,index) => {
-        const topic = tab.title.props.children 
-        
+        const topic = tab.title.props.children
+        console.log( "name:"+this.props.getTopic) 
+        this.props.getTopic(topic)
         this.props.headlineList(this.state.limit,this.state.page,topic)
         this.setState({index:index})
     }

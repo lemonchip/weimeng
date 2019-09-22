@@ -12,13 +12,22 @@ import HeadlineList   from '../headlineList/HeadlineList'
 import HeadTabs from '../../components/Tabs/Tabs'
  class Home extends Component {
 
-            render() {
+                state = {
+                    topic : ''
+                }
+
+            getTopic = (topic) =>{
+                 this.setState({topic:topic})
+                console.log(topic)
+
+            }
+                render() {
 
             return (
             <div>   
-                    <HeadTabs />
+                    <HeadTabs getTopic={this.getTopic}/>
                     <Top />
-                    <HeadlineList />
+                    <HeadlineList  topic={this.state.topic}/>
             </div>
             
             

@@ -77,6 +77,7 @@ import {withRouter} from 'react-router-dom'
 
             render() {
                 console.log(this.props.id)
+                console.log(this.props.readNum)
             return (
             <div >
             <div style={this.with}></div>

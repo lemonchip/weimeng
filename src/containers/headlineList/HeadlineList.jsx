@@ -3,6 +3,12 @@ import HeadlineItem from '../headlineItem/HeadlineItem'
 import PropTypes from 'prop-types';
 import {headlineList} from '../../redux/action'
 import {connect}    from 'react-redux'
+import {
+    Button,
+    WingBlank,
+    WhiteSpace,
+    PullToRefresh
+}  from 'antd-mobile'
  class HeadlineList extends Component {
     constructor(props) {
     super(props);
@@ -11,7 +17,8 @@ import {connect}    from 'react-redux'
         headlineList : [],
         page:1,
         limit:6,
-        topic:'推荐'
+        height: document.documentElement.clientHeight,
+        topic:''
     };
     this.timeHandle = this.timeHandle.bind(this);
   }
@@ -24,7 +31,7 @@ static propTypes = {
 
         getHeadlineList = () =>{
 
-            this.props.headlineList(this.state.limit,this.state.page,this.state.topic)
+            this.props.headlineList(this.state.limit,this.state.page,this.state.topic='推荐')
 
         }
 
@@ -34,7 +41,7 @@ static propTypes = {
             console.log(relTime)
             if((relTime/1000)<60){
                 return Math.floor(relTime/1000) + '秒前' 
-            }else if ((relTime/1000/60/60)<60){
+            }else if ((relTime/1000/60)<60){
                 return Math.floor(relTime/1000/60) + '分钟前'
             }else if ((relTime/1000/60/60/24)<1){
                 return Math.floor(relTime/1000/60/60) + '小时前'
@@ -48,14 +55,15 @@ static propTypes = {
         componentDidMount(){
             
             const {data} = this.props
-           
+            
             //如果data有数据就不在发请求
             // if(data.length===0){
                 
                
             // }
              this.getHeadlineList()
-           // console.log(data)
+            // console.log(data.topic)
+            // this.setState({topic:data.topic})
             this.setState({headlineList:data})
         }
 
@@ -78,7 +86,7 @@ static propTypes = {
                    data = []
                    data.push(tem)
                }
-                
+               
             const list =   data.map((headline)=>
             (
             
@@ -95,7 +103,26 @@ static propTypes = {
       
             return (
             <div >
-             {list}
+                <PullToRefresh
+                    onRefresh={()=>this.getHeadlineList()}
+                    style={{
+                        height: this.state.height,
+                        overflow: 'auto',
+                      }}
+                      direction={'down'}
+                >
+                  {list}
+                </PullToRefresh>
+             {/* <PullToRefresh
+                onRefresh={()=>this.getHeadlineList()}
+                style={{
+                    height: this.state.height,
+                    overflow: 'auto',
+                  }}
+                  direction={'up'}
+             >
+                 {()=>list.connect(list)}
+             </PullToRefresh> */}
             </div>
 
             );

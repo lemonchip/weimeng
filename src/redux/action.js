@@ -2,7 +2,7 @@
 import {AUTH_SUCCESS,ERROR_MSG, LOGOUT,UPLOAD_SUCCESS,
         UPLOAD_ERROR,REQ_SUCCESS,REQ_ERROR}  from './action-tybe'
 
-import {reqRegister, reqLogin,reqUpload,reqHeadlineList,reqHeadlineContent} from '../api/index'
+import {reqRegister, reqLogin,reqUpload,reqHeadlineList,reqHeadlineContent,reqHeadlineTop} from '../api/index'
 import { async } from 'q';
 //import { async } from 'q';
 
@@ -23,6 +23,9 @@ const req_headlineList = (data) =>({type:REQ_SUCCESS,data:data})
 const req_headlineContent = (data) =>({type:REQ_SUCCESS,data:data})
 //
 const req_error = (msg)  =>({type:REQ_ERROR,data:msg})
+
+//请求top成功
+const req_headlineTop = (data) =>({type:REQ_SUCCESS,data:data})
 
 export function register(username,password,password2,e_mail){
         //进行表单验证
@@ -137,6 +140,24 @@ export function headlineContent(_id){
        
         if(result.code === 0){
             dispatch(req_headlineList(result.data))
+        }else{
+            dispatch(req_error(result.msg))
+        }
+    }
+
+}
+
+//查询top内容
+export function headlineTop(data={}){
+
+    return async dispatch => {
+
+        const res = await reqHeadlineTop(data)
+        const result = res.data 
+        debugger
+         console.log('action'+result.data)
+        if(result.code === 0){
+            dispatch(req_headlineTop(result.data))
         }else{
             dispatch(req_error(result.msg))
         }

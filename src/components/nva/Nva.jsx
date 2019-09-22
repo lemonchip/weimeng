@@ -11,7 +11,7 @@ class Nva extends Component {
       selectedTab: 'home',
       hidden: false,
       fullScreen: true,
-      top:window.screen.height-50+'px'
+      top:window.innerHeight-50+'px'
     };
   }
 

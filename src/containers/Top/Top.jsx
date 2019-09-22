@@ -7,18 +7,31 @@ import {
 }  from 'antd-mobile'
 import { tuple } from 'antd/lib/_util/type';
 import './Top.less'
+import {headlineTop} from '../../redux/action'
+import {connect}    from 'react-redux'
 
-export default class Top extends Component {
+ class Top extends Component {
 
 
     state = {
-        data : [1,2,3]
+        data : []
 
     }
 
-        render() {
+    componentDidMount(){
 
+        this.props.headlineTop()
+        // const {top} = this.props
+       
+        // this.setState({data:top})
+    }
+
+        render() {
+            
+        const {top} = this.props
+            console.log('top:'+top)
         return (
+           
         <div>
 
             <Carousel
@@ -26,11 +39,11 @@ export default class Top extends Component {
                 infinite={true}
             >
              {
-                 this.state.data.map(val=>(
+                 top.map(val=>(
                   <a key={val}
                      href='#'
                       >
-                <img src={require('../../assets/images/1.jpg')} className='top-a'>
+                <img src={val.titleImage} className='top-a'>
                 
                 </img>
                   </a>   
@@ -44,3 +57,7 @@ export default class Top extends Component {
         );
         }
 }
+export default connect(
+    state => state.headlineTop,
+    {headlineTop}
+  )(Top)
