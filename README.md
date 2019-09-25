@@ -12,13 +12,14 @@
 
 ### 项目演示
 
-![](D:\workspace\演示\捕获1.PNG)
+![Image text](https://github.com/lemonchip/weimeng/raw/master/src/assets/images/yanshi1.png)
 
 ***
 
 
 
-![](D:\workspace\演示\捕获2.PNG)
+![Image text](https://github.com/lemonchip/weimeng/raw/master/src/assets/images/yanshi2.png)
+
 
 
 
