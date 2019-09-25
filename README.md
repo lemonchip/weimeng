@@ -12,13 +12,13 @@
 
 ### 项目演示
 
-![Image text](https://github.com/lemonchip/weimeng/raw/master/src/assets/images/yanshi1.png)
+![](https://github.com/lemonchip/weimeng/raw/master/src/assets/images/yanshi1.PNG)
 
 ***
 
 
 
-![Image text](https://github.com/lemonchip/weimeng/raw/master/src/assets/images/yanshi2.png)
+![Image text](https://github.com/lemonchip/weimeng/raw/master/src/assets/images/yanshi2.PNG)
 
 
 
