@@ -67,7 +67,7 @@ function headlineList(state=initHeadlineList,action){
         }
 }
 
-
+//头条内容的reducers
 function headlineContent(state={},action){
               
     switch(action.type){
