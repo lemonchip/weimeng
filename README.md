@@ -12,7 +12,7 @@
 
 ### 项目演示
 
-![image](https://github.com/lemonchip/weimeng/tree/master/src/assets/images/yanshi1.PNG
+![image](https://github.com/lemonchip/weimeng/tree/master/src/assets/images/yanshi1.PNG)
 
 
 
@@ -20,7 +20,7 @@
 
 
 
-![image](https://github.com/lemonchip/weimeng/tree/master/src/assets/images/yanshi2.PNG
+![image](https://github.com/lemonchip/weimeng/tree/master/src/assets/images/yanshi2.PNG)
 
 
 
